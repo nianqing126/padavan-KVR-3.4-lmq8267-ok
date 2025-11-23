@@ -46,7 +46,7 @@ jobs:
         sed -i 's/mtd_part_size=65536/mtd_part_size=5242880/g' /opt/rt-n56u/trunk/user/scripts/mtd_storage.sh
     - name: Build Firmware
       env:
-        TNAME: JCG-AC860M
+        TNAME: EA7500
         KERNEL: 3.4
       run: |
         cd /opt/rt-n56u/trunk
@@ -392,8 +392,8 @@ jobs:
 
         ##################################
         
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config  ## FRPC 客户端 约8k
-        echo "CONFIG_FIRMWARE_INCLUDE_FRPS=y" >> .config  ## FRPS 服务端 约8k
+        echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >> .config  ## FRPC 客户端 约8k
+        echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >> .config  ## FRPS 服务端 约8k
         echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=n" >> .config  ## wireguard 约1M
         echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config ## tunsafe（wireguard的TCP方式）
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=y" >> .config ## zerotier 约 20k
@@ -401,8 +401,8 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_DDNSTO=n" >> .config #ddnsto 约800k  已删除 /trunk/user/httpd/common.h
         echo "CONFIG_FIRMWARE_INCLUDE_TAILSCALE=y" >> .config #tailscale 约20k
         echo "CONFIG_FIRMWARE_INCLUDE_NATPIERCE=y" >> .config #皎月连 约20k
-        echo "CONFIG_FIRMWARE_INCLUDE_VNTCLI=y" >> .config #vnt客户端 约80k
-        echo "CONFIG_FIRMWARE_INCLUDE_VNTS=y" >> .config #vnt服务端 约50k
+        echo "CONFIG_FIRMWARE_INCLUDE_VNTCLI=n" >> .config #vnt客户端 约80k
+        echo "CONFIG_FIRMWARE_INCLUDE_VNTS=n" >> .config #vnt服务端 约50k
         echo "CONFIG_FIRMWARE_INCLUDE_CLOUDFLARED=y" >> .config #CF的隧道 约50k
         echo "CONFIG_FIRMWARE_INCLUDE_LUCKY=y" >> .config #LUCKY 约50k
         echo "CONFIG_FIRMWARE_INCLUDE_CLOUDFLARE=y" >> .config #CF-ddns 约50k
